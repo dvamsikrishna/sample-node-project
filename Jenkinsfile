@@ -23,15 +23,15 @@ stage('Unit-Test') {
 	}
 }
  
-stage('Maven_Build') {
+stage('NPM_INSTALL') {
 
-	when { expression { params.ACTION == 'Build' } }
+	when { expression { params.ACTION == 'Install' } }
 
 	steps {
 
 		container('node') {
     
-			echo "Maven Build"
+			echo "NPM Install Dependencies"
 	
 			sh '''
 			npm install
@@ -44,7 +44,26 @@ stage('Maven_Build') {
 	
 }
 
+stage('NPM_Build') {
 
+	when { expression { params.ACTION == 'Build' } }
+
+	steps {
+
+		container('node') {
+    
+			echo "NPM Build"
+	
+			sh '''
+			npm run build
+			
+			'''
+	
+		}
+	}
+	
+	
+}
 
 
 

@@ -13,7 +13,7 @@ stage('Unit-Test') {
 	when { expression { params.ACTION == 'Unit-Test' } }
 	
 	steps { 
-		container('maven') {
+		container('node') {
 	
 				echo "Unit-Test"
 	
@@ -29,7 +29,7 @@ stage('Maven_Build') {
 
 	steps {
 
-		container('maven') {
+		container('node') {
     
 			echo "Maven Build"
 	
